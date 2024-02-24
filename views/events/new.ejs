@@ -1,0 +1,46 @@
+<div class="data-form">
+    <form action="/events/create" method="POST">
+        <h2>Create a new event:</h2>
+        <p>Required fields are followed by *.</p>
+        
+		<div class="form-inputs">
+			<div class="row">
+				<label for="inputTitle">Title: * </label>
+				<input type="text" name="title" id="inputTitle" autofocus required>
+			</div>
+			<br>
+		</div>
+		<label for="inputDescription">Description: * </label><br>
+		<textarea name="description" id="inputDescription" required></textarea>
+		<br>
+		<div class="form-inputs">
+			<br>
+			<div class="row">
+				<label for="inputLocation">Location: * </label>
+				<input type="text" name="location" id="inputLocation" required>
+			</div>
+			<br>
+			<div class="row">
+				<label for="inputStart">Start Date: * </label>
+				<input type="date" name="startDate" id="inputStart" required>
+			</div>
+			<br>
+			<div class="row">
+				<label for="inputEnd">End Date: * </label>
+				<input type="date" name="endDate" id="inputEnd" required>
+			</div>
+			<br>	
+		</div>
+        <label for="inputOnline">Online?</label>
+        <input type="radio" id="onlineYes" name="isOnline" value="yes">
+        <label for="onlineYes">Yes</label>
+        <input type="radio" id="onlineNo" name="isOnline" value="no" checked>
+        <label for="onlineNo">No</label><br>
+        <br>
+        <input type="hidden" id="inputRegLink" name="registrationLink" value="">
+
+        <button type="submit">Create Event</button>
+    
+    </form>
+  </div>
+  

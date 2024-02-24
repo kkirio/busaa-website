@@ -1,0 +1,163 @@
+<div class="data-form">
+    <form action="<%=`/users/${user._id}/update?_method=PUT`%>" method="POST">
+        <h2>Edit user:</h2>
+        <p>Required fields are followed by *.</p>
+
+		<div class="form-inputs">
+			<div class="row">
+				<label for="inputName">Name: * </label>
+				<input
+					type="text" 
+					name="name" 
+					id="inputName" 
+					value="<%= user.name %>"
+					autofocus 
+					required
+				/>
+			</div>
+			<br>
+			<div class="row">
+				<label for="inputEmail">Email Address: * </label>
+				<input
+					type="text"
+					name="email"
+					id="inputEmail"
+					value="<%= user.email %>" 
+					required
+				/>
+			</div>
+			<br>
+			<div class="row">
+				<label for="inputPassword">Password: * </label>
+				<input
+					type="password"
+					name="password"
+					id="inputPassword"
+					required
+				/>
+			</div>
+			<br>
+		</div>
+		<label for="inputRole">Role: * </label>
+        <% if (user.role == "student") { %>
+            <input type="radio" id="roleStudent" name="role" value="student" checked>
+            <label for="roleStudent">Student</label>
+            <input type="radio" id="roleAlumni" name="role" value="alumni">
+            <label for="roleAlumni">Alumni</label>
+        <% } else { %>  
+            <input type="radio" id="roleStudent" name="role" value="student">
+            <label for="roleStudent">Student</label>
+            <input type="radio" id="roleAlumni" name="role" value="alumni" checked>
+            <label for="roleAlumni">Alumni</label>
+        <% } %>
+        <br>
+		<div class="form-inputs">
+			<br>
+			<div class="row">
+				<label for="inputGradYear">Graduation Year: * </label>
+				<input 
+					type="number" 
+					name="graduationYear"
+					id="inputGradYear"
+					value=<%= user.graduationYear %>
+					required
+				/>
+			</div>
+			<br>
+			<div class="row">
+				<label for="inputMajor">Major: * </label>
+				<input
+					type="text"
+					name="major"
+					id="inputMajor"
+					value="<%= user.major %>"
+					required
+				/>
+			</div>
+			<br>
+			<div class="row">
+				<label for="inputJob">Job: </label>
+				<input
+					type="text"
+					name="job"
+					id="inputJob"
+					value="<%= user.job %>"
+				/>
+			</div>
+			<br>
+			<div class="row">
+				<label for="inputCompany">Company: </label>
+				<input
+					type="text"
+					name="company"
+					id="inputCompany"
+					value="<%= user.company %>"
+				/>
+			</div>
+			<br>
+			<div class="row">
+				<label for="inputCity">City: </label>
+				<input
+					type="text"
+					name="city"
+					id="inputCity"
+					value="<%= user.city %>"
+				/>
+			</div>
+			<br>
+			<div class="row">
+				<label for="inputState">State: </label>
+				<input
+					type="text"
+					name="state"
+					id="inputState"
+					value="<%= user.state %>"
+				/>
+			</div>
+			<br>
+			<div class="row">
+				<label for="inputCountry">Country: </label>
+				<input
+					type="text"
+					name="country"
+					id="inputCountry"
+					value="<%= user.country %>"
+				/>
+			</div>
+			<br>
+			<div class="row">
+				<label for="inputZip">Zip Code: </label>
+				<input
+					type="number"
+					name="zipCode"
+					id="inputZip"
+					pattern="[0-9]{5}"
+					value="<%= user.zipCode %>"
+				/>
+			</div>
+			<br>
+		</div>
+        <label for="inputBio">Bio:</label><br>
+        <textarea name="bio" id="inputBio" value="<%= user.bio %>"></textarea><br>
+        <br>
+        <label for="inputInterests">Interests:</label><br>
+        <!--Prefilled current interests-->
+        <% user.interests.forEach(function(interest, i) { %>
+            <%= i+1 %>. 
+            <input
+                type="text"
+                name="interests[<%=i%>]"
+                id="inputInterests"
+                value="<%= interest %>"
+            /><br>
+        <% }) %>
+        <!--Blank input boxes if fewer than 3 current interests-->
+        <% for(var i = user.interests.length; i < 3; i++) { %>
+            <%= i+1 %>. 
+            <input type="text" name="interests[<%=i%>]" id="inputInterests"><br>
+        <% } %>
+        <br>
+        <button type="submit">Update</button>
+    </form>
+  </div>
+  

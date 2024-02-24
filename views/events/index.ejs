@@ -1,0 +1,74 @@
+<section>
+	<div class="title">
+		<h2>All Events</h2>
+		<% if (currentUser != null) { %>
+			<h4><a href="/events/new">Create a new event</a></h4>
+		<% } %>
+	</div>
+	<table>
+		<thead>
+		  <tr>
+			<th>Title</th>
+			<th>Description</th>
+			<th>Location</th>
+			<th>Start Date</th>
+			<th>End Date</th>
+			<th>Online?</th>
+			<th>Organizer</th>
+			<th>Attendees</th>
+			<th></th>
+			<th></th>
+			<th></th>
+		  </tr>
+		</thead>
+		<tbody>
+		  <% events.forEach(event => { %>
+		  <tr>
+			<td><a href="<%= `/events/${event._id}` %>"><%= event.title %></a></td>
+			<td><%= event.description %></td>
+			<td><%= event.location %></td>
+			<td><%= event.startDate.toDateString() %></td>
+			<td><%= event.endDate.toDateString() %></td>
+			<td>
+			  <% if (event.isOnline) { %>
+				Yes
+			  <% } else { %>
+				No
+			  <% } %>
+			</td>
+			<td>
+				<% if (event.organizer) { %>
+					<%= event.organizer.name %>
+				<% } else { %>
+					Deleted
+				<% } %>
+			</td>
+			<td>
+			  <ul>
+				<% event.attendees.forEach(attendee => { %>
+					<% if (attendee) { %>
+						<li><span><%= attendee.name %></span></li>
+					<% } %>
+				<% }); %>
+			  </ul>
+			</td>
+			<% if (currentUser != null) { %>
+				<td>
+					<a href="<%= event.registrationLink%> ">Register</a>
+				</form>
+				</td>
+				<td>
+					<a href="<%=`/events/${event._id}/edit` %>">Edit</a>
+				</td>
+				<td>
+				<a href="<%= `/events/${event._id}/delete?_method=DELETE` %>"
+					onclick="return confirm('Are you sure you want to delete this event?')">
+					Delete
+				</a>
+				</td>
+			<% } %>
+		  </tr>
+		  <% }); %>
+		</tbody>
+	  </table>
+</section>

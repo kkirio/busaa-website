@@ -1,0 +1,59 @@
+<section>
+	<div class="title">
+		<h2>All Jobs</h2>
+		<% if (currentUser != null) { %>
+			<h4><a href="/jobs/new">Create a new job</a></h4>
+		<% } %>
+	</div>
+	<table>
+		<thead>
+			<tr>
+				<th>Title</th>
+				<th>Company</th>
+				<th>Location</th>
+				<th>Description</th>
+				<th>Requirements</th>
+				<th>Salary</th>
+				<th>Contact Email</th>
+				<th>Contact Phone</th>
+				<th>Post Date</th>
+				<th>Deadline Date</th>
+				<th>Active?</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% jobs.forEach(job => { %>
+				<tr>
+					<td><a href="<%= `/jobs/${job._id}`%>"><%= job.title %></a></td>
+					<td><%= job.company %></td>
+					<td><%= job.location %></td>
+					<td><%= job.description %></td>
+					<td><%= job.requirements %></td>
+					<td><%= job.salary %></td>
+					<td><%= job.contactEmail %></td>
+					<td><%= job.contactPhone %></td>
+					<td><%= job.postDate.toDateString() %></td>
+					<td><%= job.deadlineDate.toDateString() %></td>
+					<td>
+						<% if (job.isActive) { %>
+						Yes
+						<% } else { %>
+						No
+						<% } %>
+					</td>
+					<% if (currentUser != null) { %>
+						<td>
+							<a href="<%=`/jobs/${job._id}/edit` %>">Edit</a>
+						</td>
+						<td>
+							<a href="<%= `/jobs/${job._id}/delete?_method=DELETE` %>"
+								onclick="return confirm('Are you sure you want to delete this job?')">
+								Delete
+							</a>
+						</td>
+					<% } %>
+				</tr>
+			<% }); %>
+		</tbody>
+	  </table>
+</section>

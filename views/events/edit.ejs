@@ -1,0 +1,77 @@
+<div class="data-form">
+    <form action="<%=`/events/${event._id}/update?_method=PUT`%>" method="POST">
+        <h2>Edit event:</h2>
+        <p>Required fields are followed by *.</p>
+
+		<div class="form-inputs">
+			<div class="row">
+				<label for="inputTitle">Title: * </label>
+				<input
+					type="text"
+					name="title"
+					id="inputTitle"
+					value="<%= event.title %>"
+					autofocus
+					required
+				/>
+			</div>
+			<br>
+		</div>
+		<label for="inputDescription">Description: * </label><br>
+        <textarea name="description" id="inputDescription" required>
+			<%= event.description %>
+        </textarea>
+		<div class="form-inputs">
+			<br>
+			<div class="row">
+				<label for="inputLocation">Location: * </label>
+				<input
+					type="text"
+					name="location"
+					id="inputLocation"
+					value="<%= event.location %>"
+					required
+				/>
+			</div>
+			<br>
+			<div class="row">
+				<label for="inputStart">Start Date: * </label>
+				<input
+					type="date"
+					name="startDate"
+					id="inputStart"
+					value="<%= event.startDate.toISOString().substr(0, 10) %>"
+					required
+				/>
+			</div>
+			<br>
+			<div class="row">
+				<label for="inputEnd">End Date: * </label>
+				<input 
+					type="date"
+					name="endDate"
+					id="inputEnd"
+					value="<%= event.endDate.toISOString().substr(0, 10) %>"
+					required
+				/>
+			</div>
+			<br>
+		</div> 
+        <label for="inputOnline">Online?</label>
+        <% if (event.isOnline) { %>
+            <input type="radio" id="onlineYes" name="isOnline" value="yes" checked>
+            <label for="onlineYes">Yes</label>
+            <input type="radio" id="onlineNo" name="isOnline" value="false">
+            <label for="onlineNo">No</label><br>
+        <% } else { %>
+            <input type="radio" id="onlineYes" name="isOnline" value="yes">
+            <label for="onlineYes">Yes</label>
+            <input type="radio" id="onlineNo" name="isOnline" value="no" checked>
+            <label for="onlineNo">No</label><br>
+        <% } %>
+        <br>
+        <button type="submit">Update</button>
+    
+    </form>
+  </div>
+  

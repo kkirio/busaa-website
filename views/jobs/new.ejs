@@ -1,0 +1,66 @@
+<div class="data-form">
+    <form action="/jobs/create" method="POST">
+        <h2>Create a new job:</h2>
+        <p>Required fields are followed by *.</p>
+        
+		<div class="form-inputs">
+			<div class="row">
+				<label for="inputTitle">Title: * </label>
+				<input type="text" name="title" id="inputTitle" autofocus required>
+			</div>
+			<br>
+			<div class="row">
+				<label for="inputCompany">Company: * </label>
+				<input type="text" name="company" id="inputCompany" required>
+			</div>
+			<br>
+			<div class="row">
+				<label for="inputLocation">Location: * </label>
+				<input type="text" name="location" id="inputLocation" required>
+			</div>
+			<br>
+		</div>
+		<label for="inputDescription">Description: * </label><br>
+        <textarea name="description" id="inputDescription" required></textarea><br>
+        <br>
+		<label for="inputReq">Requirements: * </label><br>
+        <textarea name="requirements" id="inputReq" required></textarea><br>
+        <br>
+		<div class="form-inputs">
+			<div class="row">
+				<label for="inputSalary">Salary: * </label>
+				<input type="number" name="salary" id="inputSalary" required>
+			</div>
+			<br>
+			<div class="row">
+				<label for="inputEmail">Contact Email: * </label>
+				<input type="text" name="contactEmail" id="inputEmail" required>
+			</div>
+			<br>
+			<div class="row">
+				<label for="inputPhone">Contact Phone: * </label>
+				<input type="text" name="contactPhone" id="inputPhone" required>
+			</div>
+			<br>
+			<div class="row">
+				<label for="inputPost">Post Date: </label>
+				<input type="date" name="postDate" id="inputPost">
+			</div>
+			<br>
+			<div class="row">
+				<label for="inputDeadline">Deadline Date: * </label>
+				<input type="date" name="deadlineDate" id="inputDeadline" required>
+			</div>
+			<br>
+		</div>  
+        <label for="inputActive">Active?</label>
+        <input type="radio" id="activeYes" name="isActive" value="yes" checked>
+        <label for="activeYes">Yes</label>
+        <input type="radio" id="activeNo" name="isActive" value="no">
+        <label for="activeNo">No</label><br>
+        <br>
+        <button type="submit">Create</button>
+    
+    </form>
+  </div>
+  

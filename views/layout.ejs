@@ -1,0 +1,71 @@
+<html>
+	<head>
+        <title>Brandeis Students and Alumni Association</title>
+        <meta charset="utf-8">
+        <meta name="author" content="Ken Kirio">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="/css/style.css" rel="stylesheet"/>
+    </head>
+    <body>
+        <% if (flashMessages) { %> 
+            <% if (flashMessages.success) { %>
+                <div class="flash success">
+                    <span class="closebtn">&times;</span>
+                    <%= flashMessages.success %>
+                </div>
+            <% } else if (flashMessages.error) { %>
+                <div class="flash error">
+                    <span class="closebtn">&times;</span>
+                    <%= flashMessages.error %>
+                </div>
+        <% }} %>
+        <header class="flex">
+            <img src="/images/BrandeisLogo.png" alt="Brandeis logo">
+            <div>
+                <h1 id="title">Brandeis University</h1>
+                <h2 id="subtitle">Students & Alumni Association</h3>
+            </div>
+        </header>
+        <nav id="nav" class="flex">
+			<div class="nav-routes">
+				<a href="/">Home</a>
+				<a href="/about">About</a>
+				<a href="/jobs">Jobs</a>
+				<a href="/events">Events</a>
+				<a href="/contact">Contact</a>
+				<%- include("events/_eventsModal") %>
+			</div>
+			<div class="nav-user">
+				<% if (loggedIn) { %>
+					Logged in as
+					<a href="<%=`/users/${currentUser._id}`%>">
+						<%= currentUser.name %>
+					</a>
+					<a href="/chat" class="chat-icon">Chat</a>
+					<a href="/users/logout">Logout</a>
+					<div style="display:none" id="apiToken"><%= currentUser.apiToken %></div>
+				<%} else {%>
+					<a href="/users/login">Login</a>
+					<a href="/users/new">Sign Up</a>
+				<% } %>
+			</div>
+        </nav>
+        <main class="flex">
+            <%- body %>
+        </main>
+        <footer class="flex">
+            <p>© 2023 Brandeis University</p>
+            <span></span>
+            <a href="https://www.facebook.com/BrandeisUAlumni"><img src="/images/FacebookLogo.png" alt="Facebook"></a>
+            <a href="https://www.instagram.com/brandeisualumni/"><img src="/images/InstagramLogo.png" alt="Instagram"></a>  
+            <a href="https://www.linkedin.com/school/162780"><img src="/images/LinkedinLogo.png" alt="LinkedIn"></a>            
+            <a href="https://www.youtube.com/c/BrandeisUniversityAlumniAssociation"><img src="/images/YoutubeLogo.png" alt="Youtube"></a>
+            <a href="https://twitter.com/brandeisualumni"><img src="/images/TwitterLogo.png" alt="Twitter"></a>
+		</footer>
+		
+		<script type="text/javascript" src="/js/jquery.min.js"></script>
+		<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+		<script src="/socket.io/socket.io.js"></script>
+		<script type="text/javascript" src="/js/busaaApp.js"></script>
+  	</body>
+</html>

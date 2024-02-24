@@ -1,0 +1,83 @@
+<div class="data-form">
+    <form action="/users/create" method="POST">
+        <h2>Create a New User</h2>
+        <p>Required fields are followed by *.</p>
+
+		<div class="form-inputs">
+			<div class="row">
+				<label for="inputName">Name: * </label>
+        		<input type="text" name="name" id="inputName" autofocus required>
+			</div>
+			<br>
+			<div class="row">
+				<label for="inputEmail">Email Address: * </label>
+        		<input type="text" name="email" id="inputEmail" required>
+			</div>
+			<br>
+			<div class="row">
+				<label for="inputPassword">Password: * </label>
+        		<input type="password" name="password" id="inputPassword" required>
+			</div>
+			<br>
+		</div>
+		<label for="inputRole">Role: </label>
+		<input type="radio" id="roleStudent" name="role" value="student" checked>
+		<label for="roleStudent">Student</label>
+		<input type="radio" id="roleAlumni" name="role" value="alumni">
+		<label for="roleAlumni">Alumni</label>
+		<div class="form-inputs">
+			<br>
+			<div class="row">
+				<label for="inputGradYear">Graduation Year: * </label>
+        		<input type="number" name="graduationYear" id="inputGradYear" required>
+			</div>
+			<br>
+			<div class="row">
+				<label for="inputMajor">Major: * </label>
+        		<input type="text" name="major" id="inputMajor" required>
+			</div>
+			<br>
+			<div class="row">
+				<label for="inputJob">Job: </label>
+        		<input type="text" name="job" id="inputJob">
+			</div>
+			<br>
+			<div class="row">
+				<label for="inputCompany">Company: </label>
+        		<input type="text" name="company" id="inputCompany">
+			</div>
+			<br>
+			<div class="row">
+				<label for="inputCity">City: </label>
+				<input type="text" name="city" id="inputCity">		
+			</div>
+			<br>
+			<div class="row">
+				<label for="inputState">State: </label>
+				<input type="text" name="state" id="inputState">		
+			</div>
+			<br>
+			<div class="row">
+				<label for="inputCountry">Country: </label>
+				<input type="text" name="country" id="inputCountry">		
+			</div>
+			<br>
+			<div class="row">
+				<label for="inputZip">Zip Code: </label>
+				<input type="number" name="zipCode" id="inputZip" pattern="[0-9]{5}">		
+			</div>
+			<br>
+		</div>
+			
+		<label for="inputBio">Bio:</label><br>
+		<textarea name="bio" id="inputBio"></textarea><br>		
+		<br>
+		<label for="inputInterests">Interests:</label><br>
+		1. <input type="text" name="interests[0]" id="inputInterests"><br>
+		2. <input type="text" name="interests[1]" id="inputInterests"><br>
+		3. <input type="text" name="interests[2]" id="inputInterests"><br>
+		<br>
+		<button type="submit">Sign up</button>
+    </form>
+  </div>
+  

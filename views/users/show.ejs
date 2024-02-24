@@ -1,0 +1,64 @@
+<section>
+	<div class="title">
+		<h2>User Profile</h2>
+		<h4>
+			<a href="<%=`/users/${user._id}/edit`%>">Edit</a> | 
+			<a href="<%= `/users/${user._id}/delete?_method=DELETE` %>" 
+				onclick="return confirm('Are you sure you want to delete this record?')">
+				Delete
+			</a>
+		</h4>
+	</div>
+	<table class="fit-table">
+		<tr>
+			<th>Name</th>
+			<td><%= user.name %></td>
+		</tr>
+		<tr>
+			<th>Email</th>
+			<td><%= user.email %></td>
+		</tr>
+		<tr>
+			<th>Role</th>
+			<td><%= user.role %></td>
+		</tr>
+		<tr>
+			<th>Graduation Year</th>
+			<td><%= user.graduationYear %></td>
+		</tr>
+		<tr>
+			<th>Major</th>
+			<td><%= user.major %></td>
+		</tr>
+		<tr>
+			<th>Job</th>
+			<td><%= user.job %></td>
+		</tr>
+		<tr>
+			<th>Company</th>
+			<td><%= user.company %></td>
+		</tr>
+		<tr>
+			<th>Location</th>
+			<td><%= user.location %></td>
+		</tr>
+		<tr>
+			<th>Bio</th>
+			<td><%= user.bio %></td>
+		</tr>
+		<tr>
+			<th>Interests</th>
+			<td>
+				<ol>
+					<% user.interests.forEach(interest => { %>
+					<li><%= interest %></li>
+					<% }); %>
+				</ol>
+			</td>
+		</tr>
+		<tr>
+			<th>Token</th>
+			<td><%= user.apiToken %></td>
+		</tr>
+	  </table>
+</section>
