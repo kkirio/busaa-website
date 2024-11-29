@@ -1,5 +1,6 @@
-const mongoose = require("mongoose"),
-	express = require("express"),
+const express = require("express"),
+  dotenv = require("dotenv"),
+  mongoose = require("mongoose"),
 	methodOverride = require("method-override"),
 	layouts = require("express-ejs-layouts"),
 	connectFlash = require("connect-flash"),
@@ -14,16 +15,18 @@ const mongoose = require("mongoose"),
 	chatController = require("./controllers/chatController"),
 	
 	app = express();
+  dotenv.config();
 
-/* Connect to "mongodb://localhost:27017/busaa" on Mac
-   Connect to "mongodb://0.0.0.0:27017/busaa" on Windows */
-mongoose.connect("mongodb://0.0.0.0:27017/busaa");
+mongoose.connect(process.env.DB_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+});
 const db = mongoose.connection;
 db.once("open", () => {
 	console.log("Successfully connected to mongodb");
 });
 
-app.set("port", process.env.PORT || 3000);
+app.set("port", process.env.PORT);
 app.use(express.static("public"));
 app.use(express.json());
 app.use(express.urlencoded());
@@ -35,10 +38,10 @@ app.use(
     methods: ["POST", "GET"],
   })
 );
-app.use(cookieParser("secret-pascode"));
+app.use(cookieParser(process.env.COOKIE_PARSER));
 app.use(
   expressSession({
-    secret: "secret_passcode",
+    secret: process.env.EXPRESS_SESSION,
     cookie: {
       maxAge: 40000,
     },
